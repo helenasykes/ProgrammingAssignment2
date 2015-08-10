@@ -27,7 +27,7 @@ makeCacheMatrix <- function(x = matrix()) {
   ## Get the value of the inverse - in the global environment
   getinverse <<- function() m
 
-  # Put the four functions together in a list
+  ## Put the four functions together in a list
   list(setmatrix=setmatrix, getmatrix=getmatrix,
        setinverse=setinverse, getinverse=getinverse)
 }

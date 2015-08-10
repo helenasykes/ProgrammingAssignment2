@@ -7,9 +7,6 @@
 ## b <- cacheSolve(a)
 
 ## makeCacheMatrix creates a list of four fuctions.
-## The list is in the ... environment and can be used by other fuctions 
-## such as cacheSolve below.
-
 makeCacheMatrix <- function(x = matrix()) {
   ## Set the object that will store the cached inverse of the matrix to null
   m <- NULL
@@ -23,11 +20,11 @@ makeCacheMatrix <- function(x = matrix()) {
   ## Get the value of the matrix x
   getmatrix <- function() x
   
-  ## Set the value of the inverse
+  ## Set the value of the inverse - in the global environment
   ##  solve() is the inbuilt R function to get the inverse of a matrix
   setinverse <<- function(solve) m <<- solve
 
-  ## Get the value of the inverse
+  ## Get the value of the inverse - in the global environment
   getinverse <<- function() m
 
   # Put the four functions together in a list
@@ -58,10 +55,10 @@ cacheSolve <- function(x, ...) {
         ## Calculates the inverse of the original matrix using the inbuilt R function.
         m <- solve(originalMatrix)
         
-        ##
+        ## Sets the output matrix to the inverse
         x$setmatrix(m)
         
-        ## Returns the value of m.
+        ## Returns the value of m, the inverse matrix
         m
 }
 
